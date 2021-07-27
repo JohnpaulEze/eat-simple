@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>checkout</title>
+</head>
+<body>
+    <form name="checkout-form">
+        <div class="name">
+            <label for="name">Name</label>
+            <input type="text" name="name" id="name"/>
+        </div>
+        <div class="email">
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email"/>
+        </div>
+        <div class="phone">
+            <label for="phone">Phone Number</label>
+            <input type="tel" name="phone" id="phone"/>
+        </div>
+        <script src="https://checkout.flutterwave.com/v3.js"></script>
+        <button type="button" onclick="makePayment()" id="checkout">Pay Now</button>
+    </form>
+
+    <script>
+      function makePayment() {
+        let Name = document.querySelector("#name").value
+        let Email = document.querySelector("#email").value
+        let Phone = document.querySelector("#phone").value
+
+        let cartTotal = 0
+        let cart = JSON.parse(localStorage.getItem('cart'))
+        
+        if (cart !== 0) {
+          cart.map(item => {
+            cartTotal += item.price * item.amount
+          })
+          console.log(cartTotal)
+        } else {prompt('populate your cart')}
+        
+        console.log(Name, Email, Phone, cartTotal, cart)
+          
+          if(Name && Email && Phone && cartTotal !== 0) {
+              FlutterwaveCheckout({
+                public_key: "FLWPUBK-8f91154753285758e99067ef0d057724-X",
+                tx_ref: "RX1",
+                amount: parseFloat(cartTotal.toFixed(2)),
+                currency: "NGN",
+                country: "NG",
+                payment_options: "",
+                redirect_url: // specified redirect URL
+                  "https://callbacks.piedpiper.com/flutterwave.aspx?ismobile=34",
+                customer: {
+                  email: Email,
+                  phone_number: Phone,
+                  name: Name,
+                },
+                callback: function (data) {
+                  console.log(data);
+                },
+                onclose: function() {
+                  // close modal
+                },
+                customizations: {
+                  title: "Eat Simple",
+                  description: "Payment for items in cart",
+                  logo: "https://assets.piedpiper.com/logo.png",
+                },
+              });
+            }
+
+        }
+    </script>
+</body>
+</html>
