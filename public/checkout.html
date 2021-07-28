@@ -5,9 +5,76 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>checkout</title>
+
+    <!-- Icons font CSS-->
+    <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+    <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <!-- Font special for pages-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
+
+    <!-- Vendor CSS-->
+    <!-- <link href="vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all"> -->
+
+    <!-- Main CSS-->
+    <link href="css/main.css" rel="stylesheet" media="all">
+
 </head>
 <body>
-    <form name="checkout-form">
+
+  <div class="page-wrapper bg-red p-t-180 p-b-100 font-robo">
+    <div class="wrapper wrapper--w960">
+        <div class="card card-2">
+            <div class="card-heading"></div>
+            <div class="card-body">
+                <h2 class="title">Billing Info</h2>
+                <form>
+                    <div class="input-group">
+                        <input class="input--style-2" type="text" placeholder="Name" name="name" id="name">
+                    </div>
+                    <div class="row row-space">
+                        <div class="col-2">
+                            <div class="input-group">
+                                <input class="input--style-2" type="email" placeholder="Email" name="email" id="email">
+                            </div>
+                        </div>
+                        <div class="col-2">
+                            <div class="input-group">
+                                <div class="rs-select2 js-select-simple select--no-search">
+                                    <input type="tel" name="phone" id="phone" 
+                                    placeholder="Phone Number"
+                                    class="input--style-2">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <div class="rs-select2 js-select-simple select--no-search">
+                            <input type="address" class="input--style-2"
+                            placeholder="Address/Hostel/Lodge"
+                            name="address" id="address">
+                        </div>
+                    </div>
+                    <!-- <div class="row row-space">
+                        <div class="col-2">
+                            <div class="input-group">
+                                <input class="input--style-2" type="text" placeholder="Registration Code" name="res_code">
+                            </div>
+                        </div>
+                    </div> -->
+                    <div class="p-t-30">
+                      <script src="https://checkout.flutterwave.com/v3.js"></script>
+                        <button class="btn btn--radius btn--green" type="button" id="checkout"
+                        onclick="makePayment()">Pay Now</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+ <!--    <form name="checkout-form">
         <div class="name">
             <label for="name">Name</label>
             <input type="text" name="name" id="name"/>
@@ -20,15 +87,16 @@
             <label for="phone">Phone Number</label>
             <input type="tel" name="phone" id="phone"/>
         </div>
-        <script src="https://checkout.flutterwave.com/v3.js"></script>
+        
         <button type="button" onclick="makePayment()" id="checkout">Pay Now</button>
     </form>
-
+ -->
     <script>
       function makePayment() {
         let Name = document.querySelector("#name").value
         let Email = document.querySelector("#email").value
         let Phone = document.querySelector("#phone").value
+        let Address = document.querySelector("#address").value
 
         let cartTotal = 0
         let cart = JSON.parse(localStorage.getItem('cart'))
@@ -56,6 +124,7 @@
                   email: Email,
                   phone_number: Phone,
                   name: Name,
+                  address: Address
                 },
                 callback: function (data) {
                   console.log(data);

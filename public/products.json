@@ -3,48 +3,58 @@
     {
       "sys": { "id": "1" },
       "fields": {
-        "title": "queen panel bed",
-        "price": 10.99,
+        "title": "egusi soup",
+        "add-on": {
+          "fufu": "fufu",
+          "garri": "garri",
+          "semo": "semo"
+        },
+        "price": 600.00,
         "image": { "fields": { "file": { "url": "./product-images/egusi-soup3.jpg" } } }
       }
     },
     {
       "sys": { "id": "2" },
       "fields": {
-        "title": "king panel bed",
-        "price": 12.99,
+        "title": "okpa and pap",
+        "price": 500.00,
         "image": { "fields": { "file": { "url": "./product-images/fresh-moi-moi&pap.jpg" } } }
       }
     },
     {
       "sys": { "id": "3" },
       "fields": {
-        "title": "single panel bed",
-        "price": 12.99,
+        "title": "fried plantain and egg sauce",
+        "price": 500.00,
         "image": { "fields": { "file": { "url": "./product-images/fried-plantain&egg.jpg" } } }
       }
     },
     {
       "sys": { "id": "4" },
       "fields": {
-        "title": "twin panel bed",
-        "price": 22.99,
+        "title": "vegetable soup",
+        "add-on": {
+          "fufu": "fufu",
+          "garri": "garri",
+          "semo": "semo"
+        },
+        "price": 600.00,
         "image": { "fields": { "file": { "url": "./product-images/vegetable-soup.jpg" } } }
       }
     },
     {
       "sys": { "id": "5" },
       "fields": {
-        "title": "fridge",
-        "price": 88.99,
+        "title": "white yam and sauce",
+        "price": 500.00,
         "image": { "fields": { "file": { "url": "./product-images/white-yam&egg-sauce.jpg" } } }
       }
     },
     {
       "sys": { "id": "6" },
       "fields": {
-        "title": "dresser",
-        "price": 32.99,
+        "title": "jollof and beef",
+        "price": 400.00,
         "image": { "fields": { "file": { "url": "./product-images/jollof.jpg" } } }
       }
     }

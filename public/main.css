@@ -15,6 +15,10 @@
   box-sizing: border-box;
 }
 
+a {
+  text-decoration: none;
+}
+
 body {
   color: var(--mainBlack);
   background: var(--mainWhite);
@@ -133,6 +137,7 @@ body {
   text-transform: uppercase;
   letter-spacing: var(--mainSpacing);
   font-size: 1rem;
+  text-decoration: none;
   background: var(--primaryColor);
   color: var(--mainBlack);
   border: 1px solid var(--primaryColor);
